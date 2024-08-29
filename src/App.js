@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect, useState } from "react";
+import { useAllCostumers, useAllChefs } from "./apis/postApi";
 
 function App() {
+  const [allChefs, setAllChefs] = useState([]);
+  const [allCostumers, setAllCostumers] = useState([]);
+
+
+   useAllCostumers();
+  useAllChefs();
+  // const { data, isPending: costumersLoading, isError: costumersError } = useAllCostumers();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+      <div>
+        <h1>Chefs</h1>
+        <div>
+          {/* {allChefs.map((item) => (
+            <div>{item.data}</div>
+          ))} */}
+        </div>
+      </div>
+      <div>
+        <h1>Costumers</h1>
+      </div>
     </div>
   );
 }
